@@ -93,6 +93,42 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   neonElements.forEach(el => randomFlicker(el));
+
+  // --- Mobile Navigation Toggle ---
+  const menuToggle = document.getElementById('mobileMenuToggle');
+  const navMenu = document.getElementById('primaryNavigation');
+
+  if (menuToggle && navMenu) {
+    menuToggle.addEventListener('click', () => {
+      const isExpanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      menuToggle.setAttribute('aria-expanded', !isExpanded);
+      menuToggle.classList.toggle('open');
+      navMenu.classList.toggle('nav-open');
+      document.body.classList.toggle('no-scroll');
+    });
+
+    // Close menu when a link is clicked
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.classList.remove('open');
+        navMenu.classList.remove('nav-open');
+        document.body.classList.remove('no-scroll');
+      });
+    });
+
+    // Close menu if window is resized above 900px
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 900) {
+        if (menuToggle.classList.contains('open')) {
+          menuToggle.setAttribute('aria-expanded', 'false');
+          menuToggle.classList.remove('open');
+          navMenu.classList.remove('nav-open');
+          document.body.classList.remove('no-scroll');
+        }
+      }
+    });
+  }
 });
 
 // --- Menu Tab Filtering ---

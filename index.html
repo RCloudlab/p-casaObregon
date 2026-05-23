@@ -66,13 +66,23 @@
         <span class="logo-sub neon-flicker">M X</span>
       </a>
       
-      <nav>
+      <!-- Hamburger Toggle Button -->
+      <button class="mobile-nav-toggle" id="mobileMenuToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="primaryNavigation">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      
+      <nav id="primaryNavigation">
         <ul class="nav-menu">
           <li><a href="#hero" class="nav-link active" id="navHome">Inicio</a></li>
           <li><a href="#story" class="nav-link" id="navStory">Nuestra Historia</a></li>
           <li><a href="#menu" class="nav-link" id="navMenu">Menú</a></li>
           <li><a href="#experience" class="nav-link" id="navExperience">El Patio</a></li>
           <li><a href="#footer" class="nav-link" id="navContact">Contacto</a></li>
+          <li class="mobile-only-action">
+            <button class="btn-neon nav-reserve-btn" id="mobileReserveBtn" onclick="scrollToSection('reserve')">Reservar Mesa</button>
+          </li>
         </ul>
       </nav>
 
@@ -124,8 +134,10 @@
         Hacer de cada visita una experiencia inolvidable para los sentidos es nuestra verdadera receta.
       </div>
     </div>
-    <div class="story-visual">
-      <img src="assets/hero_patio.png" alt="Courtyard nocturno de Casa Obregón con luces colgantes">
+    <div class="story-visual-wrapper">
+      <div class="story-visual">
+        <img src="assets/hero_patio.png" alt="Courtyard nocturno de Casa Obregón con luces colgantes">
+      </div>
       <div class="story-neon-box">
         <h3 class="story-neon-title text-neon-accent">El Patio de las Estrellas</h3>
         <p class="story-neon-text">Un ambiente rodeado de árboles centenarios, sombrillas rojas y una cálida iluminación perfecta para noches íntimas o tardes de café.</p>

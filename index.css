@@ -571,11 +571,16 @@ button, input {
   margin-top: 10px;
 }
 
+.story-visual-wrapper {
+  position: relative;
+  height: 500px;
+}
+
 .story-visual {
   position: relative;
   border-radius: var(--radius-md);
   overflow: hidden;
-  height: 500px;
+  height: 100%;
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
 }
 
@@ -1206,7 +1211,55 @@ button, input {
   color: var(--color-text-primary);
 }
 
-/* --- Media Queries (Responsive Styling for Desktop layout structure) --- */
+/* --- Mobile Toggle & Action utilities --- */
+.mobile-nav-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 1100;
+  padding: 10px;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 44px;
+  height: 44px;
+}
+
+.mobile-nav-toggle .bar {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background-color: var(--color-text-primary);
+  border-radius: 2px;
+  transition: var(--transition-smooth);
+  box-shadow: 0 0 4px rgba(227, 222, 203, 0.4);
+}
+
+.mobile-nav-toggle.open .bar:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+  background-color: var(--color-neon-accent);
+  box-shadow: 0 0 8px var(--color-neon-accent);
+}
+
+.mobile-nav-toggle.open .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-nav-toggle.open .bar:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+  background-color: var(--color-neon-accent);
+  box-shadow: 0 0 8px var(--color-neon-accent);
+}
+
+.mobile-only-action {
+  display: none;
+}
+
+body.no-scroll {
+  overflow: hidden;
+}
+
+/* --- Media Queries (Responsive Styling) --- */
 @media (max-width: 1200px) {
   .hero-title {
     font-size: 4.5rem;
@@ -1222,31 +1275,243 @@ button, input {
 
 @media (max-width: 900px) {
   .nav-container {
-    padding: 20px;
+    padding: 15px 24px;
   }
+  
+  .header-scrolled .nav-container {
+    padding: 10px 24px;
+  }
+  
+  .mobile-nav-toggle {
+    display: flex;
+    gap: 6px;
+  }
+  
+  #primaryNavigation {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(20, 19, 17, 0.96);
+    backdrop-filter: blur(25px);
+    -webkit-backdrop-filter: blur(25px);
+    border-left: 1px solid rgba(255, 58, 36, 0.15);
+    padding: 100px 40px 40px 40px;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.8);
+    transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 1050;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  }
+  
+  #primaryNavigation.nav-open {
+    right: 0;
+  }
+  
   .nav-menu {
-    display: none; /* In a responsive mobile context, this would trigger a hamburger menu. Since this is high-fidelity desktop focus, we hide or stack them */
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    opacity: 0;
+    transform: translateX(30px);
+    transition: opacity 0.4s ease, transform 0.4s ease;
   }
+  
+  #primaryNavigation.nav-open .nav-menu {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.15s;
+  }
+  
+  .nav-link {
+    font-size: 1.1rem;
+    display: block;
+    padding: 10px 0;
+  }
+  
+  .mobile-only-action {
+    display: block;
+    margin-top: 20px;
+  }
+  
+  .mobile-only-action .btn-neon {
+    width: 100%;
+    text-align: center;
+  }
+
   .story-section, .experience-grid {
     grid-template-columns: 1fr;
     gap: 50px;
   }
-  .story-visual {
+  
+  .story-visual-wrapper {
     height: 400px;
   }
+  
   .menu-grid {
     grid-template-columns: 1fr;
   }
+  
   .hero-title {
     font-size: 3.5rem;
   }
+  
   .hero-motto {
     font-size: 1.4rem;
   }
+  
   .cta-banner {
     padding: 40px;
   }
+  
   .cta-title {
     font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 20px;
+  }
+
+  .experience-gallery {
+    display: flex;
+    gap: 15px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    height: 320px;
+    padding: 10px 0;
+    scrollbar-width: none; /* Hide for Firefox */
+  }
+
+  .experience-gallery::-webkit-scrollbar {
+    display: none; /* Hide for Chrome/Safari */
+  }
+
+  .gallery-item {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
+    height: 100%;
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  .gallery-item-3 {
+    border: 2px solid var(--color-neon-accent);
+    box-shadow: 0 10px 20px rgba(255, 58, 36, 0.2);
+  }
+}
+
+@media (max-width: 600px) {
+  .nav-actions {
+    display: none; /* Hide Reservar button from main header bar */
+  }
+
+  .story-visual-wrapper {
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .story-visual {
+    height: 300px;
+  }
+
+  .story-neon-box {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    max-width: 100%;
+    margin: 0;
+    box-shadow: 0 5px 15px rgba(255, 58, 36, 0.1);
+  }
+
+  .menu-item-card {
+    flex-direction: column;
+  }
+
+  .menu-item-img {
+    width: 100%;
+    height: 200px;
+    min-height: auto;
+  }
+
+  .menu-item-details {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .menu-filter-container {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 30px;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+    flex-grow: 1;
+    text-align: center;
+  }
+
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 15px;
+    text-align: center;
+  }
+
+  .footer-bottom-links {
+    justify-content: center;
+    gap: 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .logo-sub {
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .hero-title {
+    font-size: 2.6rem;
+  }
+
+  .hero-title-container {
+    padding: 15px 25px;
+  }
+
+  .hero-motto {
+    font-size: 1.1rem;
+    margin-bottom: 30px;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-ctas button {
+    width: 100%;
+  }
+
+  .cta-banner {
+    padding: 30px 20px;
+  }
+
+  .cta-title {
+    font-size: 1.8rem;
   }
 }
