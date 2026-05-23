@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Casa Obregón - Café y Restaurante en Maravatío. Disfruta de nuestro café de especialidad, pan dulce artesanal, comida gourmet y un encantador patio iluminado bajo las estrellas. Aquí se cocina con el corazón.">
+  <meta name="keywords" content="Casa Obregon, restaurante Maravatio, cafe de especialidad Maravatio, pan dulce artesanal, patio con luces, terraza romantica">
+  <meta name="author" content="Casa Obregón">
+  <title>Casa Obregón | Café, Pan Dulce & Restaurante en Maravatío</title>
+
+  <!-- Canonical and Social Meta -->
+  <link rel="canonical" href="https://casaobregon.mx">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Casa Obregón | Café, Pan Dulce & Restaurante en Maravatío">
+  <meta property="og:description" content="Un rincón mágico en Maravatío donde el aroma a café de especialidad y la comida gourmet se encuentran en un patio encantado. Aquí se cocina con el corazón.">
+  <meta property="og:image" content="assets/hero_patio.png">
+  <meta property="og:url" content="https://casaobregon.mx">
+
+  <!-- Styling -->
+  <link rel="stylesheet" href="index.css">
+
+  <!-- Schema.org Structured Data for Local Restaurant -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "Casa Obregón",
+      "image": "https://casaobregon.mx/assets/hero_patio.png",
+      "priceRange": "$$",
+      "telephone": "+524471234567",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Álvaro Obregón 103",
+        "addressLocality": "Maravatío",
+        "addressRegion": "Michoacán",
+        "addressCountry": "MX"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 19.8913,
+        "longitude": -100.4468
+      },
+      "url": "https://casaobregon.mx",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "23:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.facebook.com/CasaObregonMx",
+        "https://www.instagram.com/CasaObregonMx"
+      ]
+    }
+  </script>
+</head>
+<body>
+
+  <!-- --- NAVIGATION HEADER --- -->
+  <header class="header" id="mainHeader">
+    <div class="nav-container">
+      <a href="#hero" class="logo" id="logoLink">
+        Casa Obregón
+        <span class="logo-sub neon-flicker">M X</span>
+      </a>
+      
+      <nav>
+        <ul class="nav-menu">
+          <li><a href="#hero" class="nav-link active" id="navHome">Inicio</a></li>
+          <li><a href="#story" class="nav-link" id="navStory">Nuestra Historia</a></li>
+          <li><a href="#menu" class="nav-link" id="navMenu">Menú</a></li>
+          <li><a href="#experience" class="nav-link" id="navExperience">El Patio</a></li>
+          <li><a href="#footer" class="nav-link" id="navContact">Contacto</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button class="btn-neon nav-reserve-btn" id="headerReserveBtn" onclick="scrollToSection('reserve')">Reservar</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- --- HERO SECTION --- -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="assets/hero_patio.png" alt="Patio exterior encantado de Casa Obregón por la noche">
+    </div>
+    <div class="hero-overlay"></div>
+    
+    <div class="hero-content">
+      <span class="hero-tagline">Restaurante & Café de Especialidad</span>
+      <div class="hero-title-container">
+        <h1 class="hero-title">Casa Obregón</h1>
+      </div>
+      <p class="hero-motto">
+        « Aquí se cocina con el <span class="hero-motto-highlight text-neon-accent neon-flicker">corazón</span> »
+      </p>
+      <div class="hero-ctas">
+        <button class="btn-neon" id="heroMenuBtn" onclick="scrollToSection('menu')">Explorar Menú</button>
+        <button class="btn-secondary" id="heroStoryBtn" onclick="scrollToSection('story')">Nuestra Historia</button>
+      </div>
+    </div>
+
+    <div class="scroll-indicator" id="scrollIndicator" onclick="scrollToSection('story')">
+      <span>Descubre más</span>
+      <div class="scroll-mouse"></div>
+    </div>
+  </section>
+
+  <!-- --- STORY / CONCEPT SECTION --- -->
+  <section class="section story-section reveal" id="story">
+    <div class="story-content">
+      <span class="section-tag">Nuestra Esencia</span>
+      <h2 class="section-title">El Sabor del Encuentro</h2>
+      <p class="story-description">
+        Ubicado en el corazón de Maravatío, Casa Obregón es más que un restaurante y café de especialidad. Es una invitación a desconectarse del ritmo exterior y adentrarse en un oasis culinario lleno de paz y calidez. 
+      </p>
+      <p class="story-description">
+        Nuestra emblemática fachada es custodiada por un vibrante letrero de neón rojo-naranja que ilumina las noches, revelando en su interior un patio arbolado cubierto por luces colgantes donde cada taza y cada plato se preparan con ingredientes locales y pasión artesanal.
+      </p>
+      <div class="story-badge">
+        Hacer de cada visita una experiencia inolvidable para los sentidos es nuestra verdadera receta.
+      </div>
+    </div>
+    <div class="story-visual">
+      <img src="assets/hero_patio.png" alt="Courtyard nocturno de Casa Obregón con luces colgantes">
+      <div class="story-neon-box">
+        <h3 class="story-neon-title text-neon-accent">El Patio de las Estrellas</h3>
+        <p class="story-neon-text">Un ambiente rodeado de árboles centenarios, sombrillas rojas y una cálida iluminación perfecta para noches íntimas o tardes de café.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- "COMIDA & POSTRES" MENU SECTION --- -->
+  <section class="menu-section-wrapper" id="menu">
+    <div class="section">
+      <div class="menu-header reveal">
+        <span class="section-tag">Menú de la Casa</span>
+        <h2 class="section-title">Comida & Postres</h2>
+        <p class="story-description" style="text-align: center; max-width: 600px; margin: 0 auto;">
+          Ingredientes seleccionados, horneado artesanal y baristas expertos. Descubre nuestras especialidades dulces y saladas.
+        </p>
+      </div>
+
+      <!-- Category Filter Tabs -->
+      <div class="menu-filter-container reveal reveal-delay-1">
+        <button class="filter-btn active" id="filterBtnAll" onclick="filterMenu('all')">Todo el Menú</button>
+        <button class="filter-btn" id="filterBtnCoffee" onclick="filterMenu('sweet')">Café & Repostería</button>
+        <button class="filter-btn" id="filterBtnSavory" onclick="filterMenu('savory')">Salados & Especialidades</button>
+      </div>
+
+      <!-- Menu Grid -->
+      <div class="menu-grid reveal reveal-delay-2" id="menuGrid">
+        
+        <!-- Item 1: Specialty Coffee (Sweet/Coffee Category) -->
+        <article class="menu-item-card" data-category="sweet">
+          <div class="menu-item-img">
+            <img src="assets/specialty_coffee.png" alt="Taza de café latte gourmet con arte latte en Casa Obregón">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-header">
+              <h3 class="menu-item-title">Café de Especialidad</h3>
+              <span class="menu-item-price">$65</span>
+            </div>
+            <p class="menu-item-desc">
+              Selección de granos premium de altura con notas florales y de chocolate, preparado por baristas certificados con arte latte impecable.
+            </p>
+            <div class="menu-item-footer">
+              <span class="menu-item-tag">Caliente / Helado</span>
+              <button class="order-icon-btn" aria-label="Agregar Café al pedido">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 2: Concha Gourmet (Sweet Category) -->
+        <article class="menu-item-card" data-category="sweet">
+          <div class="menu-item-img">
+            <img src="assets/concha_dessert.png" alt="Concha mexicana gourmet rellena con nata y fresas frescas">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-header">
+              <h3 class="menu-item-title">Concha con Nata & Fresas</h3>
+              <span class="menu-item-price">$85</span>
+            </div>
+            <p class="menu-item-desc">
+              Nuestra concha tradicional artesanal de vainilla, cortada y rellena generosamente con nata batida de rancho y rebanadas de fresas frescas dulces.
+            </p>
+            <div class="menu-item-footer">
+              <span class="menu-item-tag">Postre Estrella</span>
+              <button class="order-icon-btn" aria-label="Agregar Concha al pedido">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 3: Artisan Pan Dulce (Sweet Category) -->
+        <article class="menu-item-card" data-category="sweet">
+          <div class="menu-item-img">
+            <img src="assets/pan_dulce.png" alt="Selección de pan dulce tradicional artesanal de Casa Obregón">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-header">
+              <h3 class="menu-item-title">Pan Dulce de la Casa</h3>
+              <span class="menu-item-price">$45</span>
+            </div>
+            <p class="menu-item-desc">
+              Piezas artesanales horneadas diariamente a base de mantequilla pura, azúcar orgánica y recetas familiares de repostería mexicana tradicional.
+            </p>
+            <div class="menu-item-footer">
+              <span class="menu-item-tag">Horneado Diario</span>
+              <button class="order-icon-btn" aria-label="Agregar Pan Dulce al pedido">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+        <!-- Item 4: Specialty Fries (Savory Category) -->
+        <article class="menu-item-card" data-category="savory">
+          <div class="menu-item-img">
+            <img src="assets/gourmet_fries.png" alt="Papas fritas gourmet con queso parmesano, ajo y hierbas frescas">
+          </div>
+          <div class="menu-item-details">
+            <div class="menu-item-header">
+              <h3 class="menu-item-title">Papas Especiales</h3>
+              <span class="menu-item-price">$120</span>
+            </div>
+            <p class="menu-item-desc">
+              Papas fritas cortadas a mano, sazonadas al romero, acompañadas de láminas de queso parmesano maduro de la región y un exquisito alioli artesanal de ajo rostizado.
+            </p>
+            <div class="menu-item-footer">
+              <span class="menu-item-tag">Especialidad Salada</span>
+              <button class="order-icon-btn" aria-label="Agregar Papas al pedido">
+                <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              </button>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- --- COURTYARD ATMOSPHERIC SHOWCASE (EXPERIENCE) --- -->
+  <section class="section experience-section reveal" id="experience">
+    <div class="experience-grid">
+      <div class="experience-gallery">
+        <div class="gallery-item gallery-item-1">
+          <img src="assets/hero_patio.png" alt="Mesas de madera en patio exterior acogedor con iluminación cálida">
+        </div>
+        <div class="gallery-item gallery-item-2">
+          <img src="assets/pan_dulce.png" alt="Postres y ambientación en Casa Obregón">
+        </div>
+        <div class="gallery-item gallery-item-3">
+          <img src="assets/specialty_coffee.png" alt="Ambiente de café de especialidad de noche">
+        </div>
+      </div>
+      
+      <div class="experience-content">
+        <span class="section-tag">Nuestras Noches</span>
+        <h2 class="section-title">Atmósfera Nocturna</h2>
+        <p class="story-description">
+          Cuando el sol se oculta, las luces se encienden en el patio de Casa Obregón. Se respira un aire bohemio y reconfortante rodeado del susurro de las hojas de los árboles, las icónicas sombrillas rojas y las notas musicales que acompañan tu velada.
+        </p>
+        
+        <ul class="highlight-list">
+          <li class="highlight-item">
+            <span class="highlight-icon">✦</span>
+            <div class="highlight-text-container">
+              <h4 class="highlight-title">Iluminación Mágica</h4>
+              <p class="highlight-desc">Guías de luz colgantes cruzando la copa de los árboles para dar una calidez sin igual.</p>
+            </div>
+          </li>
+          <li class="highlight-item">
+            <span class="highlight-icon">✦</span>
+            <div class="highlight-text-container">
+              <h4 class="highlight-title">El Fuego del Neón</h4>
+              <p class="highlight-desc">Nuestro letrero de fachada proyecta una energía cálida, perfecto como fondo para tus recuerdos.</p>
+            </div>
+          </li>
+          <li class="highlight-item">
+            <span class="highlight-icon">✦</span>
+            <div class="highlight-text-container">
+              <h4 class="highlight-title">Mobiliario de Madera Rústica</h4>
+              <p class="highlight-desc">Cómodas mesas y sillas diseñadas para prolongar las pláticas en la sobremesa.</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- --- RESERVATIONS CTA BANNER --- -->
+  <section class="section reveal" id="reserve">
+    <div class="cta-banner">
+      <span class="section-tag">Asegura tu Mesa</span>
+      <h2 class="cta-title">Reserva en el Patio</h2>
+      <p class="cta-desc">
+        ¿Planeas una cena romántica, una tarde de café con amigos o una celebración familiar? Reserva tu lugar en nuestra terraza al aire libre y déjanos consentirte.
+      </p>
+      <button class="btn-neon" id="ctaReserveBtn" onclick="alert('¡Gracias por tu interés! En un momento te contactaremos para confirmar tu mesa en Casa Obregón (Demostración).')">
+        Reservar Mesa Ahora
+      </button>
+    </div>
+  </section>
+
+  <!-- --- FOOTER --- -->
+  <footer class="footer" id="footer">
+    <div class="footer-container">
+      
+      <!-- Brand & Socials -->
+      <div class="footer-brand">
+        <a href="#hero" class="footer-logo">
+          Casa Obregón
+        </a>
+        <p class="footer-tagline">
+          Un rincón lleno de luz, aromas mágicos y comida hecha con el corazón en el centro histórico de Maravatío.
+        </p>
+        <div class="footer-socials">
+          <!-- Instagram Icon Link -->
+          <a href="https://instagram.com/CasaObregonMx" target="_blank" class="social-icon-btn" aria-label="Instagram de Casa Obregón" id="footerInsta">
+            <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.051.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 1 0 0 12.324 6.162 6.162 0 0 0 0-12.324zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm6.406-11.845a1.44 1.44 0 1 0 0 2.881 1.44 1.44 0 0 0 0-2.881z"/></svg>
+          </a>
+          <!-- Facebook Icon Link -->
+          <a href="https://facebook.com/CasaObregonMx" target="_blank" class="social-icon-btn" aria-label="Facebook de Casa Obregón" id="footerFb">
+            <svg viewBox="0 0 24 24"><path d="M9 8H7v3h2v9h3v-9h3l.5-3H12V6c0-.88.39-1 1-1h2V2h-3c-2.42 0-4 1.35-4 4v2z"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- Links Quick Navigation -->
+      <div>
+        <h3 class="footer-title">Navegación</h3>
+        <ul class="footer-links">
+          <li><a href="#hero" class="footer-link">Inicio</a></li>
+          <li><a href="#story" class="footer-link">Nuestra Historia</a></li>
+          <li><a href="#menu" class="footer-link">Menú</a></li>
+          <li><a href="#experience" class="footer-link">El Patio</a></li>
+          <li><a href="#reserve" class="footer-link">Reservaciones</a></li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div>
+        <h3 class="footer-title">Contacto</h3>
+        <ul class="footer-contact-info">
+          <li class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div class="contact-text">
+              <strong>Dirección</strong><br>
+              <a href="https://maps.google.com/?q=Álvaro+Obregón+103,+Maravatío" target="_blank">Álvaro Obregón 103, Centro<br>Maravatío, Michoacán</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div class="contact-text">
+              <strong>Teléfono</strong><br>
+              <a href="tel:+524471234567">+52 (447) 123-4567</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <span class="contact-icon">✉️</span>
+            <div class="contact-text">
+              <strong>Correo</strong><br>
+              <a href="mailto:hola@casaobregon.mx">hola@casaobregon.mx</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Hours widget -->
+      <div>
+        <h3 class="footer-title">Horarios</h3>
+        <div class="hours-widget">
+          <div class="hours-row">
+            <span class="hours-day">Martes a Jueves</span>
+            <span class="hours-time-highlight">08:00 - 22:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Viernes a Domingo</span>
+            <span class="hours-time-highlight">08:00 - 23:00</span>
+          </div>
+          <div class="hours-row">
+            <span class="hours-day">Lunes</span>
+            <span class="hours-closed">Cerrado</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Bottom copyright -->
+    <div class="footer-bottom">
+      <p>&copy; 2026 Casa Obregón. Todos los derechos reservados. Diseñado con el corazón.</p>
+      <div class="footer-bottom-links">
+        <a href="#privacy" class="footer-bottom-link" id="footerPrivacy">Aviso de Privacidad</a>
+        <a href="#terms" class="footer-bottom-link" id="footerTerms">Términos de Servicio</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- --- JAVASCRIPT --- -->
+  <script src="index.js"></script>
+</body>
+</html>
