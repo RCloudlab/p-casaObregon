@@ -183,3 +183,164 @@ function scrollToSection(sectionId) {
     });
   }
 }
+
+// --- Gallery Item Data ---
+const galleryItemsData = [
+  { src: 'assets/hero_patio.png', alt: 'El Patio de Noche - Casa Obregón', caption: 'El Patio de Noche: Un ambiente mágico bajo las guías de luz y la copa de los árboles.', category: 'place' },
+  { src: 'assets/cafe_interior.png', alt: 'Rincón Acogedor - Casa Obregón', caption: 'Rincón Acogedor: Interiores de diseño rústico-industrial idóneos para una tarde de lectura.', category: 'place' },
+  { src: 'assets/facade_neon.png', alt: 'Fachada de Neón - Casa Obregón', caption: 'Fachada de Neón: Nuestro icónico letrero ilumina las noches históricas de Maravatío.', category: 'place' },
+  { src: 'assets/brunch_dish.png', alt: 'Avocado Toast Gourmet - Casa Obregón', caption: 'Avocado Toast Gourmet: Pan de masa madre artesanal con aguacate cremoso, queso feta y huevo poché.', category: 'food' },
+  { src: 'assets/barista_pour.png', alt: 'Arte Latte del Barista - Casa Obregón', caption: 'Arte Latte: Café de especialidad preparado a la perfección por baristas expertos.', category: 'food' },
+  { src: 'assets/concha_dessert.png', alt: 'Concha con Nata & Fresas - Casa Obregón', caption: 'Concha con Nata & Fresas: Pan dulce mexicano tradicional relleno de nata batida de rancho.', category: 'food' }
+];
+
+let currentFilteredItems = [...galleryItemsData];
+let currentLightboxIndex = 0;
+
+// --- Gallery Tab Filtering ---
+function filterGallery(category) {
+  // Update active button state
+  const filterButtons = document.querySelectorAll('.gallery-section .filter-btn');
+  filterButtons.forEach(btn => btn.classList.remove('active'));
+
+  // Find matching button and activate it
+  if (category === 'all') {
+    document.getElementById('galleryFilterBtnAll').classList.add('active');
+    currentFilteredItems = [...galleryItemsData];
+  } else if (category === 'place') {
+    document.getElementById('galleryFilterBtnPlace').classList.add('active');
+    currentFilteredItems = galleryItemsData.filter(item => item.category === 'place');
+  } else if (category === 'food') {
+    document.getElementById('galleryFilterBtnFood').classList.add('active');
+    currentFilteredItems = galleryItemsData.filter(item => item.category === 'food');
+  }
+
+  // Filter Cards
+  const cards = document.querySelectorAll('.gallery-card');
+  
+  cards.forEach((card, index) => {
+    const cardCategory = card.getAttribute('data-category');
+    
+    // Smooth transition
+    card.style.opacity = '0';
+    card.style.transform = 'scale(0.95)';
+    
+    setTimeout(() => {
+      if (category === 'all' || cardCategory === category) {
+        card.style.display = 'block';
+        // Force reflow
+        card.offsetHeight;
+        card.style.opacity = '1';
+        card.style.transform = 'scale(1)';
+        
+        // Re-assign the correct index in currentFilteredItems to this card for lightbox opening
+        const cardImgSrc = card.querySelector('img').getAttribute('src');
+        const matchingIndex = currentFilteredItems.findIndex(item => item.src === cardImgSrc);
+        card.setAttribute('onclick', `openLightbox(${matchingIndex})`);
+      } else {
+        card.style.display = 'none';
+      }
+    }, 200);
+  });
+}
+
+// --- Lightbox Modal Logic ---
+function openLightbox(index) {
+  const lightbox = document.getElementById('lightboxModal');
+  if (!lightbox) return;
+
+  currentLightboxIndex = index;
+  updateLightboxContent();
+
+  lightbox.classList.add('active');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('no-scroll');
+}
+
+function closeLightbox() {
+  const lightbox = document.getElementById('lightboxModal');
+  if (!lightbox) return;
+
+  lightbox.classList.remove('active');
+  lightbox.setAttribute('aria-hidden', 'true');
+  
+  // Only remove no-scroll if mobile menu is not also open
+  const menuToggle = document.getElementById('mobileMenuToggle');
+  if (!menuToggle || !menuToggle.classList.contains('open')) {
+    document.body.classList.remove('no-scroll');
+  }
+}
+
+function updateLightboxContent() {
+  const imgElement = document.getElementById('lightboxImg');
+  const captionElement = document.getElementById('lightboxCaption');
+  
+  if (imgElement && captionElement && currentFilteredItems[currentLightboxIndex]) {
+    const item = currentFilteredItems[currentLightboxIndex];
+    
+    // Fade out first for a smoother transition
+    imgElement.style.opacity = '0';
+    
+    setTimeout(() => {
+      imgElement.src = item.src;
+      imgElement.alt = item.alt;
+      captionElement.textContent = item.caption;
+      imgElement.style.opacity = '1';
+    }, 150);
+  }
+}
+
+function nextLightboxImage() {
+  if (currentFilteredItems.length === 0) return;
+  currentLightboxIndex = (currentLightboxIndex + 1) % currentFilteredItems.length;
+  updateLightboxContent();
+}
+
+function prevLightboxImage() {
+  if (currentFilteredItems.length === 0) return;
+  currentLightboxIndex = (currentLightboxIndex - 1 + currentFilteredItems.length) % currentFilteredItems.length;
+  updateLightboxContent();
+}
+
+// Bind Lightbox Event Listeners when DOM is loaded
+document.addEventListener('DOMContentLoaded', () => {
+  const lightbox = document.getElementById('lightboxModal');
+  const closeBtn = document.getElementById('lightboxClose');
+  const prevBtn = document.getElementById('lightboxPrev');
+  const nextBtn = document.getElementById('lightboxNext');
+
+  if (lightbox) {
+    // Close on clicking close button or black backdrop background
+    if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
+    
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox || e.target.classList.contains('lightbox-content')) {
+        closeLightbox();
+      }
+    });
+
+    // Navigation triggers
+    if (prevBtn) prevBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevLightboxImage();
+    });
+    
+    if (nextBtn) nextBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextLightboxImage();
+    });
+
+    // Keyboard navigation (global)
+    document.addEventListener('keydown', (e) => {
+      if (lightbox.classList.contains('active')) {
+        if (e.key === 'Escape') {
+          closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+          nextLightboxImage();
+        } else if (e.key === 'ArrowLeft') {
+          prevLightboxImage();
+        }
+      }
+    });
+  }
+});
