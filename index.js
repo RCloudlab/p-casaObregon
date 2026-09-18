@@ -66,7 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     setTimeout(() => {
       // Temporarily dim the element to simulate a brief brownout or drop in power
-      element.style.textShadow = '0 0 2px rgba(255, 58, 36, 0.2), 0 0 4px rgba(255, 58, 36, 0.1)';
+      element.style.textShadow = '0 0 2px rgba(74, 156, 93, 0.2), 0 0 4px rgba(74, 156, 93, 0.1)';
       element.style.opacity = '0.6';
       
       setTimeout(() => {
@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Double flicker probability
         if (Math.random() > 0.5) {
           setTimeout(() => {
-            element.style.textShadow = '0 0 2px rgba(255, 58, 36, 0.2), 0 0 4px rgba(255, 58, 36, 0.1)';
+            element.style.textShadow = '0 0 2px rgba(74, 156, 93, 0.2), 0 0 4px rgba(74, 156, 93, 0.1)';
             element.style.opacity = '0.6';
             setTimeout(() => {
               element.style.textShadow = '';
@@ -131,45 +131,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-// --- Menu Tab Filtering ---
-function filterMenu(category) {
-  // Update active button state
-  const filterButtons = document.querySelectorAll('.filter-btn');
-  filterButtons.forEach(btn => btn.classList.remove('active'));
-
-  // Find matching button and activate it
-  if (category === 'all') {
-    document.getElementById('filterBtnAll').classList.add('active');
-  } else if (category === 'sweet') {
-    document.getElementById('filterBtnCoffee').classList.add('active');
-  } else if (category === 'savory') {
-    document.getElementById('filterBtnSavory').classList.add('active');
-  }
-
-  // Filter Cards
-  const cards = document.querySelectorAll('.menu-item-card');
-  
-  cards.forEach(card => {
-    const cardCategory = card.getAttribute('data-category');
-    
-    // Smooth transition
-    card.style.opacity = '0';
-    card.style.transform = 'scale(0.95)';
-    
-    setTimeout(() => {
-      if (category === 'all' || cardCategory === category) {
-        card.style.display = 'flex';
-        // Force reflow
-        card.offsetHeight;
-        card.style.opacity = '1';
-        card.style.transform = 'scale(1)';
-      } else {
-        card.style.display = 'none';
-      }
-    }, 200); // match transition duration
-  });
-}
-
 // --- Smooth Scrolling Helper ---
 function scrollToSection(sectionId) {
   const target = document.getElementById(sectionId);
@@ -186,12 +147,12 @@ function scrollToSection(sectionId) {
 
 // --- Gallery Item Data ---
 const galleryItemsData = [
-  { src: 'assets/hero_patio.png', alt: 'El Patio de Noche - Casa Obregón', caption: 'El Patio de Noche: Un ambiente mágico bajo las guías de luz y la copa de los árboles.', category: 'place' },
-  { src: 'assets/cafe_interior.png', alt: 'Rincón Acogedor - Casa Obregón', caption: 'Rincón Acogedor: Interiores de diseño rústico-industrial idóneos para una tarde de lectura.', category: 'place' },
-  { src: 'assets/facade_neon.png', alt: 'Fachada de Neón - Casa Obregón', caption: 'Fachada de Neón: Nuestro icónico letrero ilumina las noches históricas de Maravatío.', category: 'place' },
-  { src: 'assets/brunch_dish.png', alt: 'Avocado Toast Gourmet - Casa Obregón', caption: 'Avocado Toast Gourmet: Pan de masa madre artesanal con aguacate cremoso, queso feta y huevo poché.', category: 'food' },
-  { src: 'assets/barista_pour.png', alt: 'Arte Latte del Barista - Casa Obregón', caption: 'Arte Latte: Café de especialidad preparado a la perfección por baristas expertos.', category: 'food' },
-  { src: 'assets/concha_dessert.png', alt: 'Concha con Nata & Fresas - Casa Obregón', caption: 'Concha con Nata & Fresas: Pan dulce mexicano tradicional relleno de nata batida de rancho.', category: 'food' }
+  { src: 'assets/hero_patio.png', alt: 'El Patio de Noche - Cafetería Toscanos', caption: 'El Patio de Noche: Un ambiente mágico bajo las guías de luz y la copa de los árboles.', category: 'place' },
+  { src: 'assets/cafe_interior.png', alt: 'Rincón Acogedor - Cafetería Toscanos', caption: 'Rincón Acogedor: Interiores de diseño rústico-industrial idóneos para una tarde de lectura.', category: 'place' },
+  { src: 'assets/facade_neon.png', alt: 'Fachada de Neón - Cafetería Toscanos', caption: 'Fachada de Neón: Nuestro icónico letrero ilumina las noches históricas de Maravatío.', category: 'place' },
+  { src: 'assets/brunch_dish.png', alt: 'Avocado Toast Gourmet - Cafetería Toscanos', caption: 'Avocado Toast Gourmet: Pan de masa madre artesanal con aguacate cremoso, queso feta y huevo poché.', category: 'food' },
+  { src: 'assets/barista_pour.png', alt: 'Arte Latte del Barista - Cafetería Toscanos', caption: 'Arte Latte: Café de especialidad preparado a la perfección por baristas expertos.', category: 'food' },
+  { src: 'assets/concha_dessert.png', alt: 'Concha con Nata & Fresas - Cafetería Toscanos', caption: 'Concha con Nata & Fresas: Pan dulce mexicano tradicional relleno de nata batida de rancho.', category: 'food' }
 ];
 
 let currentFilteredItems = [...galleryItemsData];
