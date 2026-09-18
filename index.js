@@ -146,13 +146,14 @@ function scrollToSection(sectionId) {
 }
 
 // --- Gallery Item Data ---
+const logoSrc = 'assets/Gemini_Generated_Image_jf57kvjf57kvjf57-removebg-preview.png';
 const galleryItemsData = [
-  { src: 'assets/hero_patio.png', alt: 'El Patio de Noche - Cafetería Toscanos', caption: 'El Patio de Noche: Un ambiente mágico bajo las guías de luz y la copa de los árboles.', category: 'place' },
-  { src: 'assets/cafe_interior.png', alt: 'Rincón Acogedor - Cafetería Toscanos', caption: 'Rincón Acogedor: Interiores de diseño rústico-industrial idóneos para una tarde de lectura.', category: 'place' },
-  { src: 'assets/facade_neon.png', alt: 'Fachada de Neón - Cafetería Toscanos', caption: 'Fachada de Neón: Nuestro icónico letrero ilumina las noches históricas de Maravatío.', category: 'place' },
-  { src: 'assets/brunch_dish.png', alt: 'Avocado Toast Gourmet - Cafetería Toscanos', caption: 'Avocado Toast Gourmet: Pan de masa madre artesanal con aguacate cremoso, queso feta y huevo poché.', category: 'food' },
-  { src: 'assets/barista_pour.png', alt: 'Arte Latte del Barista - Cafetería Toscanos', caption: 'Arte Latte: Café de especialidad preparado a la perfección por baristas expertos.', category: 'food' },
-  { src: 'assets/concha_dessert.png', alt: 'Concha con Nata & Fresas - Cafetería Toscanos', caption: 'Concha con Nata & Fresas: Pan dulce mexicano tradicional relleno de nata batida de rancho.', category: 'food' }
+  { src: 'assets/cafe_ambiente.jpg', alt: 'Ambiente de Noche - Cafetería Toscanos', caption: 'Ambiente de Noche: Un rincón mágico bajo las luces cálidas, perfecto para leer o platicar.', category: 'place' },
+  { src: logoSrc, alt: 'Logo de Cafetería Toscanos', caption: 'Rincón Acogedor: Interiores de diseño rústico-industrial idóneos para una tarde de lectura.', category: 'place' },
+  { src: logoSrc, alt: 'Logo de Cafetería Toscanos', caption: 'Fachada de Neón: Nuestro icónico letrero ilumina las noches históricas de Maravatío.', category: 'place' },
+  { src: logoSrc, alt: 'Logo de Cafetería Toscanos', caption: 'Avocado Toast Gourmet: Pan de masa madre artesanal con aguacate cremoso, queso feta y huevo poché.', category: 'food' },
+  { src: logoSrc, alt: 'Logo de Cafetería Toscanos', caption: 'Arte Latte: Café de especialidad preparado a la perfección por baristas expertos.', category: 'food' },
+  { src: logoSrc, alt: 'Logo de Cafetería Toscanos', caption: 'Concha con Nata & Fresas: Pan dulce mexicano tradicional relleno de nata batida de rancho.', category: 'food' }
 ];
 
 let currentFilteredItems = [...galleryItemsData];
@@ -178,14 +179,14 @@ function filterGallery(category) {
 
   // Filter Cards
   const cards = document.querySelectorAll('.gallery-card');
-  
-  cards.forEach((card, index) => {
+
+  cards.forEach((card) => {
     const cardCategory = card.getAttribute('data-category');
-    
+
     // Smooth transition
     card.style.opacity = '0';
     card.style.transform = 'scale(0.95)';
-    
+
     setTimeout(() => {
       if (category === 'all' || cardCategory === category) {
         card.style.display = 'block';
@@ -193,10 +194,11 @@ function filterGallery(category) {
         card.offsetHeight;
         card.style.opacity = '1';
         card.style.transform = 'scale(1)';
-        
+
         // Re-assign the correct index in currentFilteredItems to this card for lightbox opening
-        const cardImgSrc = card.querySelector('img').getAttribute('src');
-        const matchingIndex = currentFilteredItems.findIndex(item => item.src === cardImgSrc);
+        const originalIndex = Number(card.getAttribute('data-gallery-index'));
+        const item = galleryItemsData[originalIndex];
+        const matchingIndex = currentFilteredItems.findIndex(i => i === item);
         card.setAttribute('onclick', `openLightbox(${matchingIndex})`);
       } else {
         card.style.display = 'none';
